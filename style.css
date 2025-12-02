@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+    font-family: sans-serif;
+}
+
+#game-container {
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    background-color: #000;
+}
+
+canvas {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    height: 100%;
+    width: auto;
+    max-height: 100vh;
+}
+
+/* Make it responsive */
+@media (max-aspect-ratio: 288/512) {
+    canvas {
+        width: 100vw;
+        height: auto;
+    }
+}
