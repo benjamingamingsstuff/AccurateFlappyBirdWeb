@@ -227,8 +227,12 @@ const bird = {
 
     draw: function () {
         let birdName = `bird${birdColor}_${this.animation[this.frame]}`;
+        const s = sprites[birdName];
+        // Scale by 1.15x
+        const w = s.width * 1.15;
+        const h = s.height * 1.15;
         // Convert degrees to radians for canvas
-        drawSprite(birdName, this.x, this.y, null, null, this.rotation * Math.PI / 180);
+        drawSprite(birdName, this.x, this.y, w, h, this.rotation * Math.PI / 180);
     },
 
     flap: function () {
@@ -440,7 +444,7 @@ const ui = {
 
                 // New Label
                 if (score > bestScore) {
-                    drawSprite('new', 167, 247);
+                    drawSprite('new', 167, 250);
                 }
 
                 buttons.play.x = 78;
@@ -565,3 +569,10 @@ function loop() {
 // Init
 init();
 img.onload = loop;
+
+// DevTools Command
+window.resethighscore = function () {
+    bestScore = 0;
+    localStorage.setItem('flappy_best', 0);
+    console.log("High score reset to 0!");
+};
