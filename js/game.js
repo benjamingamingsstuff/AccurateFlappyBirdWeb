@@ -532,40 +532,6 @@ function resetGame() {
     state.current = state.getReady;
 }
 
-// Initial Start
-function init() {
-    bird.reset();
-    pipes.reset();
-    score = 0;
-    frames = 0;
-    state.current = state.splash; // Start at Splash
-}
-
-function loop() {
-    // Update
-    bird.update();
-    fg.update();
-    pipes.update();
-
-    // Draw
-    if (state.current === state.splash) {
-        ui.draw();
-    } else {
-        ctx.fillStyle = '#70c5ce'; // Default sky color (day)
-        if (bgType === 1) ctx.fillStyle = '#008793'; // Night approx
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        bg.draw();
-        pipes.draw();
-        fg.draw(); // Ground over pipes
-        bird.draw();
-        ui.draw();
-    }
-
-    frames++;
-    requestAnimationFrame(loop);
-}
-
 // Init
 init();
 img.onload = loop;
